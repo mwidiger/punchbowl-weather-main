@@ -2,11 +2,11 @@ require 'test_helper'
 
 class LocationTest < ActiveSupport::TestCase
   test "can initialize location" do
-    location = Location.new('New York', 40.7128, -74.0060)
+    location = Location.new(slug: nil, name: 'New York', latitude: 40.7128, longitude: -74.0060)
     assert_instance_of Location, location
     assert_equal 'New York', location.name
-    assert_equal 40.7128, location.lat
-    assert_equal -74.0060, location.lon
+    assert_equal 40.7128, location.latitude
+    assert_equal -74.0060, location.longitude
   end
 
   test "get location by id" do
