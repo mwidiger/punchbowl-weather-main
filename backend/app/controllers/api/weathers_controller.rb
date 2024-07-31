@@ -3,7 +3,7 @@ class Api::WeathersController < ApplicationController
   def show
     location = Location.get(params[:location_id])
     client = OpenWeather::Client.new
-    data = client.current_weather(lat: location.lat, lon: location.lon)
+    data = client.current_weather(lat: location.latitude, lon: location.longitude)
 
     render json: data
   rescue OpenWeather::Errors::Fault
