@@ -1,6 +1,6 @@
 class Location < ApplicationRecord
   def self.get(slug)
-    first(slug: slug)
+    where(slug: slug).first
   end
 
   def self.lookup(lat:, lon:)
