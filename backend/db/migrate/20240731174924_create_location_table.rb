@@ -1,6 +1,6 @@
 class CreateLocationTable < ActiveRecord::Migration[7.0]
   def change
-    create_table :location_tables do |t|
+    create_table :locations do |t|
       t.string :slug
       t.string :name
       t.float :latitude
