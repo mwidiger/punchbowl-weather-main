@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2024_07_31_174924) do
-  create_table "location_tables", force: :cascade do |t|
+  create_table "locations", force: :cascade do |t|
     t.string "slug"
     t.string "name"
     t.float "latitude"
