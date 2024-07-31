@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema[7.0].define(version: 2024_07_31_174924) do
   create_table "location_tables", force: :cascade do |t|
+    t.string "slug"
     t.string "name"
     t.float "latitude"
     t.float "longitude"
@@ -19,6 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_31_174924) do
     t.datetime "updated_at", null: false
     t.index ["latitude", "longitude"], name: "index_location_coordinates", unique: true
     t.index ["name"], name: "index_location_name", unique: true
+    t.index ["slug"], name: "index_location_slug", unique: true
   end
 
   create_table "users", force: :cascade do |t|
