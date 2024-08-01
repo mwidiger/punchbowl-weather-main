@@ -1,4 +1,6 @@
 class Location < ApplicationRecord
+  has_many :user_favorites, dependent: :delete_all
+
   def self.get(slug)
     where(slug: slug).first
   end
