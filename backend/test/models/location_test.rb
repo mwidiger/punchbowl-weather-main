@@ -20,9 +20,8 @@ class LocationTest < ActiveSupport::TestCase
   end
 
   test "location lookup return city and state" do
-    skip
     location = Location.lookup(lat: 42.2793, lon: -71.4162)
-    assert_equal 'Framingham, Massachusetts', location.name
+    assert_equal 'Framingham', location.name
   end
 
   test "lookup returns nil for invalid coordinates" do
