@@ -17,6 +17,6 @@ class Api::UserFavoritesController < ApplicationController
   end
 
   def destroy
-    render json: nil
+    render json: {}, status: Factories::UserFavoriteFactory.delete?(id: params[:id]) ? :no_content : :bad_request
   end
 end

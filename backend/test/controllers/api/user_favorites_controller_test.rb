@@ -3,7 +3,8 @@ require "test_helper"
 class Api::UserFavoritesControllerTest < ActionDispatch::IntegrationTest
   user_id = Identity.current_user_id
   location_id = Location.first.id
-  uf = UserFavorite.create(user_id: user_id, location_id: location_id)
+  uf = UserFavorite.where(user_id: user_id, location_id: location_id).first_or_create
+  user_favorite_id = uf.id
 
   # This record should always exist because seeded
   test 'get all favorite should return json' do
@@ -39,13 +40,13 @@ class Api::UserFavoritesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'delete a valid favorite should reduce its count by one' do
-    delete api_user_favorites_path(location_id: location_id)
+    delete api_user_favorite_path(id: user_favorite_id)
     assert_response :no_content
     assert UserFavorite.count == 0
   end
 
   test 'delete an invalid favorite should throw an error and count should remain the same' do
-    delete api_user_favorites_path(location_id: 999)
+    delete api_user_favorite_path(id: 999)
     assert_response :bad_request
   end
 end
