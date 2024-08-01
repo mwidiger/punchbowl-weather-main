@@ -1,6 +1,6 @@
 class Api::UserFavoritesController < ApplicationController
   def index
-    render json: []
+    render json: UserFavorite.where(user_id: Identity.current_user_id)
   end
 
   def create
