@@ -24,7 +24,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { locations } = useLocations();
   const { locationSlug } = useContext(SessionContext);
-  // const { favorites } = useUserFavorites();
+  const { favorites } = useUserFavorites();
 
   const isSelected = ({ slug }: Location) => slug === locationSlug;
 
