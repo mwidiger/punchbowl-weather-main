@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_31_174924) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_01_141426) do
   create_table "locations", force: :cascade do |t|
     t.string "slug"
     t.string "name"
@@ -21,6 +21,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_31_174924) do
     t.index ["latitude", "longitude"], name: "index_location_coordinates", unique: true
     t.index ["name"], name: "index_location_name", unique: true
     t.index ["slug"], name: "index_location_slug", unique: true
+  end
+
+  create_table "user_favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_user_favorites_on_location_id"
+    t.index ["user_id"], name: "index_favorite_user"
   end
 
   create_table "users", force: :cascade do |t|
