@@ -9,4 +9,7 @@ class Factories::UserFavoriteFactory
     return user_favorite.valid? ? user_favorite : nil 
   end
 
+  def self.delete?(id: nil)
+    UserFavorite.delete(id) == 1
+  end
 end
