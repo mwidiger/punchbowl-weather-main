@@ -27,11 +27,10 @@ export const Layout = ({ children }: { children: ReactNode }) => {
   const { favorites } = useUserFavorites();
 
   const isSelected = ({ slug }: Location) => slug === locationSlug;
-
-  const favoriteLocationIds = []; // Remove this line and uncomment the section below when you implement favorites.
-  // const favoriteLocationIds = useMemo(() => {
-  //   return favorites?.map(({ location_id }) => location_id) ?? [];
-  // }, [favorites]);
+  //const favoriteLocationIds = []; // Remove this line and uncomment the section below when you implement favorites.
+  const favoriteLocationIds = useMemo(() => {
+    return favorites?.map(({ location_id }) => location_id) ?? [];
+  }, [favorites]);
 
   return (
     <>

@@ -16,6 +16,7 @@ export const useUserFavorites = () => {
     `${process.env.NEXT_PUBLIC_API_BASE}/api/user_favorites`,
     fetcher
   );
+  console.log(data)
 
   return {
     favorites: data,
