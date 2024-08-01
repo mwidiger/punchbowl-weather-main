@@ -4,7 +4,16 @@ class Api::UserFavoritesController < ApplicationController
   end
 
   def create
-    render json: []
+    user_favorite = Factories::UserFavoriteFactory.create(
+      location_id: params[:location_id],
+      user_id: Identity.current_user_id
+    )
+
+    if user_favorite
+      render json: user_favorite, status: :created
+    else
+      render json: {}, status: :bad_request
+    end
   end
 
   def destroy
