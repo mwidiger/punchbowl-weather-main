@@ -1,7 +1,13 @@
+import useSWR from "swr";
+
 export type Location = {
+  id: number;
   slug: string;
   name: string;
-  id: number;
+  latitude: number;
+  longitude: number;
+  created_at: Date;
+  updated_at: Date;
 };
 
 const locations: Array<Location> = [
@@ -10,12 +16,20 @@ const locations: Array<Location> = [
   { slug: "chicago", name: "Chicago", id: 3 },
 ];
 
+const fetcher = (path) =>
+  fetch(path)
+    .then((response) => response.json());
+
 export const useLocations = () => {
-  // TODO: Fetch this data from the API as a React Hook.
+  const { data, error } = useSWR<Location, Error>(
+    `${process.env.NEXT_PUBLIC_API_BASE}/api/locations`,
+    fetcher
+  );
+
   return {
-    locations,
-    isLoading: false,
-    isError: false,
+    locations: data,
+    isLoading: !data && !error,
+    isError: error,
   };
 };
 
