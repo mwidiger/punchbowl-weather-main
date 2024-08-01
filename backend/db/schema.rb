@@ -28,8 +28,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_01_141426) do
     t.integer "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "\"location\"", name: "index_favorite_location"
     t.index ["location_id"], name: "index_user_favorites_on_location_id"
-    t.index ["user_id"], name: "index_favorite_user"
+    t.index ["user_id", "location_id"], name: "index_favorite_user_location", unique: true
   end
 
   create_table "users", force: :cascade do |t|
