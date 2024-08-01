@@ -16,8 +16,7 @@ export default function WeatherPage() {
   const { setLocationSlug, locationSlug } = useContext(SessionContext);
   const { id, name } = useLocation(locationSlug) ?? {};
   const { weather } = useWeather(locationSlug);
-   const { favorites } = useUserFavorites();
-  console.log(id, name)
+  const { favorites } = useUserFavorites();
 
   //const isFavorite = false; // Remove this line and uncomment the section below when you implement favorites.
   const isFavorite = useMemo(() => {
