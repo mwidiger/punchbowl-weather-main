@@ -1,10 +1,11 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import FavoriteButton from "../components/FavoriteButton";
 import { LocationHeading } from "../components/LocationHeading";
 import { SessionContext } from "../components/SessionProvider";
 import { CurrentWeather } from "../components/CurrentWeather";
 import { useLocation } from "../hooks/useLocations";
 import { useWeather } from "../hooks/useWeather";
+import { useUserFavorites } from "../hooks/useFavorites";
 
 const DEFAULT_LOCATION_SLUG = "new_york";
 
