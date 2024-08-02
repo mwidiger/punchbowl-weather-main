@@ -130,6 +130,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.4)
+    rack-attack (6.7.0)
+      rack (>= 1.0, < 4)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
     rack-test (2.0.2)
@@ -187,6 +189,7 @@ DEPENDENCIES
   open-weather-ruby-client
   pry
   puma (~> 5.0)
+  rack-attack
   rack-cors
   rails (~> 7.0.4)
   sqlite3 (~> 1.4)
